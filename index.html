@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Happy Birthday 💙</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
+
+      :root {
+        --blue: #94bbe9;
+        --blue-dark: #5e8fcb;
+        --blue-light: #c9ddf5;
+        --beige: #e8dcc8;
+        --cream: #faf5eb;
+        --brown: #536276;
+        --white: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+        color: var(--brown);
+        background:
+          radial-gradient(
+            circle at 10% 15%,
+            rgba(255, 255, 255, 0.34),
+            transparent 22%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(232, 220, 200, 0.42),
+            transparent 28%
+          ),
+          var(--blue);
+      }
+
+      .screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: 0.75s ease;
+      }
+      .screen.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      /* decoration */
+      .decor {
+        position: fixed;
+        pointer-events: none;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 22px;
+      }
+      .d1 {
+        top: 12%;
+        left: 9%;
+      }
+      .d2 {
+        top: 20%;
+        right: 12%;
+      }
+      .d3 {
+        bottom: 15%;
+        left: 14%;
+      }
+      .d4 {
+        bottom: 20%;
+        right: 9%;
+      }
+      .cloud {
+        position: fixed;
+        width: 110px;
+        height: 38px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.62);
+        filter: blur(0.3px);
+      }
+      .cloud:before,
+      .cloud:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: inherit;
+      }
+      .cloud:before {
+        width: 55px;
+        height: 55px;
+        left: 20px;
+        top: -25px;
+      }
+      .cloud:after {
+        width: 45px;
+        height: 45px;
+        right: 17px;
+        top: -18px;
+      }
+      .cloud.one {
+        left: -30px;
+        bottom: 8%;
+      }
+      .cloud.two {
+        right: -30px;
+        top: 12%;
+        transform: scale(0.75);
+      }
+
+      /* screen 1 */
+      .card {
+        width: min(430px, 100%);
+        padding: 42px 32px 36px;
+        border-radius: 30px;
+        background: rgba(250, 245, 235, 0.94);
+        box-shadow: 0 25px 65px rgba(60, 95, 135, 0.22);
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .card-icon {
+        font-size: 30px;
+        margin-bottom: 15px;
+      }
+      h1,
+      h2 {
+        font-family: "Montserrat", serif;
+        color: #476a95;
+      }
+      h1 {
+        font-size: 40px;
+        line-height: 1.15;
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        font-size: 15px;
+        opacity: 0.72;
+        margin-bottom: 28px;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        font-size: 13px;
+        margin: 0 0 8px 4px;
+      }
+      input {
+        width: 100%;
+        padding: 14px 15px;
+        border: 2px solid #d8c9b0;
+        border-radius: 14px;
+        outline: none;
+        font: inherit;
+        color: var(--brown);
+        background: #fff;
+      }
+      input:focus {
+        border-color: var(--blue-dark);
+        box-shadow: 0 0 0 4px rgba(148, 187, 233, 0.25);
+      }
+      .error {
+        height: 22px;
+        padding-top: 6px;
+        font-size: 12px;
+        color: #a96d68;
+      }
+      .btn {
+        border: 0;
+        border-radius: 14px;
+        padding: 14px 22px;
+        background: var(--blue-dark);
+        color: white;
+        font:
+          600 15px "Montserrat",
+          sans-serif;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(70, 120, 180, 0.25);
+        transition: 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+      }
+      .main-btn {
+        width: 100%;
+        margin-top: 7px;
+      }
+
+      /* screen 2 cake assembly */
+      .cake-screen {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .assembly-title {
+        font-family: "Montserrat", serif;
+        font-size: clamp(29px, 7vw, 40px);
+        color: #416991;
+        margin-bottom: 7px;
+      }
+      .assembly-subtitle {
+        font-size: 14px;
+        opacity: 0.78;
+        margin-bottom: 18px;
+      }
+
+      .cake-area {
+        position: relative;
+        width: min(360px, 90vw);
+        height: 390px;
+      }
+
+      /* plate */
+      .plate {
+        position: absolute;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 310px;
+        height: 24px;
+        border-radius: 50%;
+        background: #f8f1e5;
+        border: 3px solid #d9c9b2;
+        box-shadow: 0 12px 22px rgba(58, 86, 115, 0.18);
+      }
+
+      /* each tier starts above and falls into position */
+      .tier {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        z-index: 2;
+      }
+      .tier.show {
+        animation: dropTier 0.85s cubic-bezier(0.2, 0.85, 0.3, 1.15) forwards;
+      }
+      .tier.bottom {
+        bottom: 42px;
+        width: 265px;
+        height: 108px;
+      }
+      .tier.middle {
+        bottom: 135px;
+        width: 210px;
+        height: 92px;
+      }
+      .tier.top {
+        bottom: 216px;
+        width: 155px;
+        height: 78px;
+      }
+
+      .layer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px 15px 24px 24px;
+        background: var(--beige);
+        border: 3px solid #d4c1a5;
+        box-shadow:
+          0 8px 0 #d1bea2,
+          0 14px 20px rgba(70, 88, 110, 0.13);
+      }
+
+      .tier.blue .layer {
+        background: var(--blue);
+        border-color: #7fa9d9;
+        box-shadow:
+          0 8px 0 #7da3d0,
+          0 14px 20px rgba(70, 88, 110, 0.13);
+      }
+
+      .tier-top {
+        position: absolute;
+        left: 50%;
+        top: -13px;
+        transform: translateX(-50%);
+        width: calc(100% + 8px);
+        height: 31px;
+        border-radius: 50%;
+        background: #faf3e8;
+        border: 3px solid #d4c1a5;
+      }
+
+      .tier.blue .tier-top {
+        background: #a9c9ed;
+        border-color: #7fa9d9;
+      }
+
+      .drip {
+        position: absolute;
+        top: 7px;
+        left: 5%;
+        width: 90%;
+        height: 28px;
+        background: #fffaf2;
+        border-radius: 0 0 20px 20px;
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% 55%,
+          94% 55%,
+          91% 100%,
+          85% 55%,
+          74% 55%,
+          70% 100%,
+          63% 55%,
+          53% 55%,
+          49% 100%,
+          40% 55%,
+          29% 55%,
+          25% 100%,
+          18% 55%,
+          0 55%
+        );
+      }
+      .tier.blue .drip {
+        background: #eaf3fd;
+      }
+
+      .dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #fff;
+        top: 48px;
+      }
+      .dot.a {
+        left: 18%;
+      }
+      .dot.b {
+        left: 48%;
+      }
+      .dot.c {
+        right: 18%;
+      }
+
+      .candles {
+        position: absolute;
+        left: 50%;
+        top: -57px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+      }
+      .candle {
+        width: 10px;
+        height: 38px;
+        border-radius: 5px;
+        background: repeating-linear-gradient(
+          -45deg,
+          #fff 0 5px,
+          var(--blue) 5px 10px
+        );
+        position: relative;
+      }
+      .flame {
+        position: absolute;
+        left: 50%;
+        top: -22px;
+        width: 13px;
+        height: 19px;
+        transform: translateX(-50%);
+        border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+        background: #f4c96d;
+        box-shadow: 0 0 15px rgba(244, 201, 109, 0.65);
+        animation: flicker 0.55s infinite alternate;
+      }
+      .flame:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        width: 5px;
+        height: 9px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: #fff5d1;
+      }
+
+      .cake-hint {
+        min-height: 26px;
+        font-size: 15px;
+        color: #426b98;
+        margin-top: -4px;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+
+      /* blow screen */
+      .blow-screen .cake-area {
+        height: 370px;
+      }
+      .blow-screen .tier {
+        opacity: 1;
+      }
+      .blow-screen .tier.bottom {
+        bottom: 42px;
+      }
+      .blow-screen .tier.middle {
+        bottom: 135px;
+      }
+      .blow-screen .tier.top {
+        bottom: 216px;
+      }
+
+      .cake-complete {
+        animation: cakePop 0.7s ease;
+      }
+      .candle.off .flame {
+        display: none;
+      }
+      .candle.off:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -23px;
+        width: 10px;
+        height: 10px;
+        transform: translateX(-50%);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        animation: smoke 1.2s ease-out forwards;
+      }
+
+      /* message */
+      .message-card {
+        width: min(590px, 100%);
+        padding: 43px 30px;
+        border-radius: 30px;
+        background: rgba(250, 245, 235, 0.94);
+        box-shadow: 0 25px 70px rgba(60, 95, 135, 0.2);
+        text-align: center;
+      }
+      .message-card h2 {
+        font-size: clamp(34px, 8vw, 48px);
+        margin-bottom: 22px;
+      }
+      .message {
+        white-space: pre-line;
+        font-family: "Montserrat", serif;
+        font-size: clamp(17px, 4vw, 20px);
+        line-height: 1.85;
+      }
+      .signature {
+        margin-top: 25px;
+        color: var(--blue-dark);
+        font-family: "Montserrat", serif;
+      }
+
+      .floating {
+        position: fixed;
+        bottom: -30px;
+        pointer-events: none;
+        color: white;
+        animation: floatUp 4.5s linear forwards;
+        z-index: 20;
+      }
+
+      @keyframes dropTier {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -190px) rotate(-5deg);
+        }
+        65% {
+          opacity: 1;
+          transform: translate(-50%, 12px) rotate(2deg);
+        }
+        82% {
+          transform: translate(-50%, -5px) rotate(-1deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, 0) rotate(0);
+        }
+      }
+      @keyframes flicker {
+        from {
+          transform: translateX(-50%) rotate(-3deg) scale(1);
+        }
+        to {
+          transform: translateX(-50%) rotate(3deg) scale(1.1);
+        }
+      }
+      @keyframes smoke {
+        from {
+          opacity: 0.8;
+          transform: translate(-50%, 0) scale(0.6);
+        }
+        to {
+          opacity: 0;
+          transform: translate(12px, -55px) scale(2);
+        }
+      }
+      @keyframes cakePop {
+        0% {
+          transform: scale(0.96);
+        }
+        50% {
+          transform: scale(1.04);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes floatUp {
+        from {
+          transform: translateY(0) rotate(0);
+          opacity: 0.8;
+        }
+        to {
+          transform: translateY(-110vh) rotate(35deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card,
+        .message-card {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+        .cake-area {
+          transform: scale(0.86);
+          margin-top: -18px;
+          margin-bottom: -20px;
+        }
+      }
+    
+/* ===== MOBILE-FIRST: bổ sung dựa trên code gốc ===== */
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100svh;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 600px) {
+  .screen {
+    min-height: 100svh;
+    width: 100%;
+    padding:
+      calc(16px + env(safe-area-inset-top))
+      calc(16px + env(safe-area-inset-right))
+      calc(16px + env(safe-area-inset-bottom))
+      calc(16px + env(safe-area-inset-left));
+  }
+
+  .card {
+    width: min(92vw, 390px);
+    padding: 32px 21px 27px;
+    border-radius: 26px;
+  }
+
+  .card-icon {
+    font-size: 27px;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(29px, 8vw, 34px);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  input {
+    width: 100%;
+    min-height: 50px;
+    font-size: 14px;
+    padding: 13px 14px;
+  }
+
+  .btn {
+    min-height: 50px;
+    padding: 13px 18px;
+    font-size: 14px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Cake assembly */
+  .cake-screen {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .assembly-title {
+    width: 100%;
+    max-width: 350px;
+    font-size: clamp(25px, 7.2vw, 31px);
+    line-height: 1.25;
+  }
+
+  .assembly-subtitle {
+    width: 100%;
+    font-size: 12.5px;
+    margin-bottom: 0;
+  }
+
+  .cake-area {
+    width: 100%;
+    max-width: 350px;
+    height: 370px;
+    margin: 0 auto;
+  }
+
+  .plate {
+    width: 270px;
+    height: 20px;
+    bottom: 28px;
+  }
+
+  .tier.bottom {
+    width: 235px;
+    height: 96px;
+    bottom: 49px;
+  }
+
+  .tier.middle {
+    width: 185px;
+    height: 80px;
+    bottom: 132px;
+  }
+
+  .tier.top {
+    width: 138px;
+    height: 69px;
+    bottom: 202px;
+  }
+
+  .tier-top {
+    height: 27px;
+    top: -11px;
+  }
+
+  .drip {
+    height: 24px;
+    top: 6px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    top: 42px;
+  }
+
+  .candles {
+    gap: 15px;
+    top: -50px;
+  }
+
+  .candle {
+    width: 9px;
+    height: 34px;
+  }
+
+  .flame {
+    width: 12px;
+    height: 18px;
+    top: -20px;
+  }
+
+  .cake-hint {
+    min-height: 24px;
+    font-size: 12.5px;
+    margin-top: -10px;
+    margin-bottom: 8px;
+  }
+
+  .blow-screen .cake-area {
+    height: 360px;
+  }
+
+  .blow-screen .tier.bottom {
+    bottom: 49px;
+  }
+
+  .blow-screen .tier.middle {
+    bottom: 132px;
+  }
+
+  .blow-screen .tier.top {
+    bottom: 202px;
+  }
+
+  /* Message */
+  .message-card {
+    width: min(92vw, 390px);
+    padding: 32px 21px;
+    border-radius: 26px;
+  }
+
+  .message-card h2 {
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 19px;
+  }
+
+  .message {
+    font-size: 15.5px;
+    line-height: 1.8;
+    overflow-wrap: break-word;
+  }
+
+  .signature {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  .decor {
+    font-size: 17px;
+  }
+
+  .cloud {
+    transform: scale(.7);
+  }
+
+  .cloud.two {
+    transform: scale(.55);
+  }
+}
+
+@media (max-width: 370px) {
+  .screen {
+    padding: 13px;
+  }
+
+  .card,
+  .message-card {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .cake-area {
+    transform: scale(.88);
+    transform-origin: center;
+    margin-top: -18px;
+    margin-bottom: -28px;
+  }
+
+  .message {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-height: 650px) and (orientation: landscape) {
+  .cake-area {
+    transform: scale(.72);
+    transform-origin: center;
+    margin-top: -55px;
+    margin-bottom: -70px;
+  }
+
+  .assembly-subtitle {
+    margin-bottom: -8px;
+  }
+}
+
+    </style>
+  </head>
+
+  <body>
+    <div class="decor d1">✦</div>
+    <div class="decor d2">♡</div>
+    <div class="decor d3">✧</div>
+    <div class="decor d4">♡</div>
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+
+    <!-- 1. NHẬP NGÀY SINH -->
+    <section class="screen active" id="screen1">
+      <div class="card">
+        <div class="card-icon">🎂</div>
+        <h1>Một ngày đặc biệt...</h1>
+        <p class="subtitle">Có một điều nhỏ xíu dành cho ní 💙</p>
+
+        <label for="birthday">Nhập ngày sinh của ní nhé</label>
+        <input type="date" id="birthday" />
+
+        <div class="error" id="error"></div>
+
+        <button class="btn main-btn" id="continueBtn">Tiếp tục →</button>
+      </div>
+    </section>
+
+    <!-- 2. BÁNH RỚT TỪNG TẦNG -->
+    <section class="screen" id="screen2">
+      <div class="cake-screen">
+        <h2 class="assembly-title">Chờ đợi là hạnh phúc</h2>
+        <p class="assembly-subtitle">Chờ một chút nhé 💙</p>
+
+        <div class="cake-area" id="assemblyCake">
+          <div class="plate"></div>
+
+          <div class="tier bottom blue" id="tier1">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+            <span class="dot a"></span>
+            <span class="dot b"></span>
+            <span class="dot c"></span>
+          </div>
+
+          <div class="tier middle" id="tier2">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+            <span class="dot a"></span>
+            <span class="dot b"></span>
+            <span class="dot c"></span>
+          </div>
+
+          <div class="tier top blue" id="tier3">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+
+            <div class="candles">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-hint" id="cakeHint">Bánh đang được chuẩn bị...</div>
+      </div>
+    </section>
+
+    <!-- 3. BÁNH HOÀN CHỈNH + THỔI NẾN -->
+    <section class="screen blow-screen" id="screen3">
+      <div class="cake-screen">
+        <h2 class="assembly-title">Xong rồi nè! 💙</h2>
+        <p class="assembly-subtitle">Ước một điều rồi thổi nến nhé...</p>
+
+        <div class="cake-area" id="finalCake">
+          <div class="plate"></div>
+
+          <div class="tier bottom blue">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+            <span class="dot a"></span><span class="dot b"></span
+            ><span class="dot c"></span>
+          </div>
+
+          <div class="tier middle">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+            <span class="dot a"></span><span class="dot b"></span
+            ><span class="dot c"></span>
+          </div>
+
+          <div class="tier top blue">
+            <div class="layer"></div>
+            <div class="tier-top"></div>
+            <div class="drip"></div>
+            <div class="candles">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" id="blowBtn">💨 Thổi nến</button>
+      </div>
+    </section>
+
+    <!-- 4. LỜI CHÚC -->
+    <section class="screen" id="screen4">
+      <div class="message-card">
+        <div style="font-size: 22px; margin-bottom: 12px">✦</div>
+
+        <h2>Chúc mừng sinh nhật 💙</h2>
+
+        <div class="message">Chúc bạn Hoàng Đức Anh Tuấn tuổi mới mãi đẹp trai, học giỏi và yêu mình hơn hahahaha. 
+          Chúc bạn luôn luôn bình an và hậc nhìu sức khỏe</div>
+
+        <div class="signature">Made with love ♡</div>
+      </div>
+    </section>
+
+    <script>
+      const screens = [
+        document.getElementById("screen1"),
+        document.getElementById("screen2"),
+        document.getElementById("screen3"),
+        document.getElementById("screen4"),
+      ];
+
+      const birthday = document.getElementById("birthday");
+      const error = document.getElementById("error");
+      const continueBtn = document.getElementById("continueBtn");
+      const blowBtn = document.getElementById("blowBtn");
+
+      function goTo(from, to) {
+        screens[from].classList.remove("active");
+        setTimeout(() => screens[to].classList.add("active"), 180);
+      }
+
+      /* Nhập ngày sinh */
+      continueBtn.addEventListener("click", () => {
+        if (!birthday.value) {
+          error.textContent = "Nhập ngày sinh vào trước nha ♡";
+          birthday.focus();
+          return;
+        }
+
+        error.textContent = "";
+        localStorage.setItem("birthday", birthday.value);
+
+        goTo(0, 1);
+
+        /* Cho từng tầng rơi xuống lần lượt */
+        setTimeout(() => {
+          document.getElementById("tier1").classList.add("show");
+          document.getElementById("cakeHint").textContent =
+            "Tầng đầu tiên rơi xuống... ✨";
+        }, 500);
+
+        setTimeout(() => {
+          document.getElementById("tier2").classList.add("show");
+          document.getElementById("cakeHint").textContent =
+            "Thêm một tầng nữa... 💙";
+        }, 1450);
+
+        setTimeout(() => {
+          document.getElementById("tier3").classList.add("show");
+          document.getElementById("cakeHint").textContent =
+            "Tadaaa! 🎉 Bánh kem hoàn thành!";
+        }, 2400);
+
+        /* Sau khi ráp bánh xong chuyển sang màn thổi nến */
+        setTimeout(() => {
+          goTo(1, 2);
+        }, 3900);
+      });
+
+      /* Thổi nến */
+      blowBtn.addEventListener("click", () => {
+        const flames = document.querySelectorAll("#finalCake .candle");
+        flames.forEach((candle, index) => {
+          setTimeout(() => candle.classList.add("off"), index * 130);
+        });
+
+        blowBtn.disabled = true;
+        blowBtn.textContent = "✨ Ước nguyện của bạn thành hiện thực...";
+
+        createParticles();
+
+        setTimeout(() => goTo(2, 3), 1800);
+      });
+
+      /* Tim / sao bay */
+      function createParticles() {
+        const symbols = ["♡", "✦", "✧", "·", "♡"];
+
+        for (let i = 0; i < 22; i++) {
+          const el = document.createElement("div");
+          el.className = "floating";
+          el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          el.style.left = Math.random() * 100 + "vw";
+          el.style.fontSize = 14 + Math.random() * 13 + "px";
+          el.style.animationDelay = Math.random() * 0.7 + "s";
+          el.style.animationDuration = 3.5 + Math.random() * 2 + "s";
+          document.body.appendChild(el);
+
+          setTimeout(() => el.remove(), 6000);
+        }
+      }
+    </script>
+  </body>
+</html>
